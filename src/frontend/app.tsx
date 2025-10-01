@@ -1,9 +1,13 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
+import { RouterProvider } from "react-router-dom"
+import router from "./configs/router"
 
-const root = createRoot(document.body);
-root.render(
+function App() {
+  return (
     <>
-        Minav here
+      <RouterProvider router={router} />
+    
     </>
-);
+  )
+}
+
+export default App
