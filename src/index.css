@@ -1,74 +1,114 @@
-/* Make the body take the full window and center content */
+/* Make the body take the full window with transparent background */
 body, #root {
   margin: 0;
   padding: 0;
   height: 100vh;
   width: 100vw;
-  background: rgba(0, 0, 0, 0.6); /* transparent background */
-  display: flex;
-  flex-direction: column; /* navbar on top, content below */
+  background: transparent; /* transparent background */
   color: white;
-  font-family: sans-serif;
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   overflow: hidden;
+  position: relative;
 }
 
-/* Draggable Navbar */
+/* Floating Navbar */
 .navbar {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
   height: 50px;
-  background-color: rgba(30, 30, 30, 0.9); /* slightly dark and semi-transparent */
+
+  width: calc(100% - 80px);
+  max-width: 1200px;
+  background: rgba(20, 20, 25, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 1rem;
-  -webkit-app-region: drag; /* makes it draggable */
+  padding: 0.1rem 1.5rem;
+  -webkit-app-region: drag;
   user-select: none;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   z-index: 1000;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Navbar title */
 .navbar-title {
   font-size: 18px;
-  font-weight: bold;
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 /* Buttons container in navbar */
 .navbar-buttons {
   display: flex;
-  gap: 10px;
-  -webkit-app-region: no-drag; /* buttons are clickable */
+  gap: 8px;
+  -webkit-app-region: no-drag;
+  align-items: center;
 }
 
 /* Navbar buttons */
 .navbar-buttons button {
-  background: none;
-  border: none;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   color: white;
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
-  padding: 5px 8px;
-  border-radius: 4px;
-  transition: background 0.2s;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  font-weight: 500;
 }
 
 .navbar-buttons button:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
 }
 
-/* Content wrapper below navbar */
+/* Content wrapper - full height with padding for floating navbar */
 .content-wrapper {
-  flex: 1; /* take remaining space below navbar */
+  height: 100vh;
+  width: 100vw;
+  padding-top: 80px; /* Space for floating navbar */
   display: flex;
   justify-content: center;
   align-items: center;
-  -webkit-app-region: no-drag; /* so content is clickable */
+  -webkit-app-region: no-drag;
+}
+
+/* Page container for content below floating navbar */
+.page-container {
+  width: calc(100% - 40px);
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  height: calc(100vh - 80px);
+  padding-top: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spacer
+{
+  height: 20px;
 }
 
 /* Home content box */
 .home-box {
-  background: rgba(0, 0, 0, 0.6); /* semi-transparent black */
+  background: rgba(20, 20, 25, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   padding: 2rem;
-  border-radius: 1rem;
+  border-radius: 16px;
   text-align: center;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  max-width: 500px;
+  width: 100%;
 }

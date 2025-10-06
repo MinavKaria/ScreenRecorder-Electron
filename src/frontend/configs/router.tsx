@@ -1,5 +1,6 @@
 import { createHashRouter } from "react-router-dom";
 import Home from "../pages/Home";
+import Settings from "../pages/Settings";
 import Layout from "../components/Layout";
 
 const router = createHashRouter([
@@ -11,6 +12,10 @@ const router = createHashRouter([
         path: "/",
         element: <Home />,
     },
+    {
+      path:'/settings',
+      element:<Settings/>
+    }
     ],
   },
 ]);
