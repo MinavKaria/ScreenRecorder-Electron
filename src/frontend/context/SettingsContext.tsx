@@ -12,6 +12,7 @@ export interface AppSettings {
   microphoneLevel: number;
   systemAudio: boolean;
   outputDevice: string;
+  recording: boolean;
 
   recordingQuality: "720p" | "1080p" | "4k";
   frameRate: 30 | 60;
@@ -36,11 +37,12 @@ const defaultSettings: AppSettings = {
   recordingQuality: "1080p",
   frameRate: 30,
   autoStart: false,
-  saveFolder: "",
+  saveFolder: "\"C:\\Users\\mkkar\\Downloads\"",
   selectedSourceId: "",
   theme: "dark",
   showPreview: true,
   status:"Ready to record",
+    recording: false,
   
 };
 
@@ -85,6 +87,7 @@ export const SettingsProvider: React.FC<SettingsProviderProps> = ({
     key: K,
     value: AppSettings[K]
   ) => {
+      console.log("Updating setting:", key, value);
     setSettings((prev) => ({
       ...prev,
       [key]: value,

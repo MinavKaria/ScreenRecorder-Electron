@@ -1,4 +1,4 @@
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import "./styles/Settings.css";
 import { Volume2, Mic, Monitor, Headphones, ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -6,15 +6,16 @@ import { useSettings } from "../context/SettingsContext";
 
 function Settings() {
   const navigate = useNavigate();
+  const [sources, setSources] = useState<{ id: string; name: string }[]>([]);
   const { settings, updateSetting, resetSettings } = useSettings();
 
   useEffect(() => {
     const fetchSources = async () => {
       try {
         const availableSources = await window.electronAPI.getAudioSources();
-        // setSources(availableSources);
+        setSources(availableSources);
         if (availableSources.length > 0) {
-          // setSelectedSourceId(availableSources[0].id);
+            updateSetting("selectedSourceId", availableSources[0].id);
         }
       } catch (error) {
         console.error("Error fetching sources:", error);
@@ -37,27 +38,26 @@ function Settings() {
 
       <div className="settings-section">
         <div className="settings-group">
-          <div className="settings-group-header">
-            <Volume2 size={20} />
-            <h3>Video Setting</h3>
-          </div>
+          {/*<div className="settings-group-header">*/}
+          {/*  <Volume2 size={20} />*/}
+          {/*  <h3>Video Setting</h3>*/}
+          {/*</div>*/}
 
           <div className="settings-item">
-            <label className="settings-label">Source</label>
-            <select
-              value={settings.audioQuality}
-              onChange={(e) =>
-                updateSetting(
-                  "audioQuality",
-                  e.target.value as "low" | "medium" | "high"
-                )
-              }
-              className="settings-select"
-            >
-              <option value="low">Low (22kHz)</option>
-              <option value="medium">Medium (44kHz)</option>
-              <option value="high">High (48kHz)</option>
-            </select>
+            <label className="settings-label">Save Folder</label>
+              <select
+                  value={settings.selectedSourceId}
+                  onChange={(e) => {
+                        updateSetting("selectedSourceId", e.target.value);
+                  }}
+                  disabled={settings.recording}
+              >
+                  {sources.map((source, index) => (
+                      <option key={source.id} value={source.id}>
+                          Screen {index}: {source.name}
+                      </option>
+                  ))}
+              </select>
           </div>
         </div>
 

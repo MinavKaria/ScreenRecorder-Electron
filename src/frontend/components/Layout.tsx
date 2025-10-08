@@ -8,22 +8,25 @@ function Layout() {
         style={{
           display: "flex",
           flexDirection: "column",
+            maxHeight: "100vh",
+            maxWidth: "600px",
+            // border: "1px solid #ccc",
+            borderRadius: "8px",
+
         }}
       >
+        <Navbar />
         <div
-          // style={{
-          //   flex: 1,
-          // }}
+          style={{
+            // padding: "20px",
+
+          }}
         >
-          <Navbar />
-        </div>
-        <div className="spacer"></div>
-        <div
-          className="content page-container"
-          // style={{
-          //   flex: 1,
-          // }}
-        >
+            <div style={{
+                height: "30px"
+            }}>
+
+            </div>
           <Outlet />
         </div>
       </div>

@@ -52,6 +52,18 @@ const config: ForgeConfig = {
       [FuseV1Options.OnlyLoadAppFromAsar]: true,
     }),
   ],
+    publishers: [
+        {
+            name: '@electron-forge/publisher-github',
+            config: {
+                repository: {
+                    owner: 'MinavKaria',
+                    name: 'ScreenRecorder-Electron'
+                },
+                prerelease: true
+            }
+        }
+    ]
 };
 
 export default config;

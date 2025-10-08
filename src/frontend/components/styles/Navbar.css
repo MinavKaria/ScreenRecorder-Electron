@@ -1,0 +1,62 @@
+/* Navbar recording status indicator styles */
+.navbar-status {
+  display: flex;
+  align-items: center;
+  margin-right: 0.5rem;
+  min-width: 70px;
+}
+
+.navbar-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #bbb;
+  margin-right: 5px;
+  display: inline-block;
+  position: relative;
+  border: 1px solid #bbb;
+  transition: background 0.3s, border 0.3s;
+}
+
+.navbar-status-dot.recording {
+  background: #ef4444;
+  border: 1px solid #fff;
+  box-shadow: 0 0 4px #ef4444;
+  animation: pulse-dot 1.2s infinite;
+}
+
+@keyframes pulse-dot {
+  0% { box-shadow: 0 0 0 0 #ef4444; }
+  70% { box-shadow: 0 0 0 8px rgba(239,68,68,0.2); }
+  100% { box-shadow: 0 0 0 0 #ef4444; }
+}
+
+.navbar-status-pill {
+  padding: 1px 6px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.05);
+  color: #eee;
+  font-weight: 500;
+  font-size: 0.72rem;
+  letter-spacing: 0.01em;
+  border: 1px solid #444;
+  min-width: 32px;
+  text-align: center;
+  line-height: 1.1;
+  transition: all 0.3s;
+}
+
+.navbar-status-pill.recording {
+  background: rgba(239,68,68,0.12);
+  color: red;
+  /*border: 1px solid #ef4444;*/
+  /*box-shadow: 0 0 2px #ef4444;*/
+
+  /*animation: pill-pulse 1.2s infinite;*/
+}
+
+@keyframes pill-pulse {
+  0% { box-shadow: 0 0 2px #ef4444, 0 0 0 0 #ef4444; }
+  70% { box-shadow: 0 0 8px #ef4444, 0 0 0 8px rgba(239,68,68,0.15); }
+  100% { box-shadow: 0 0 2px #ef4444, 0 0 0 0 #ef4444; }
+}

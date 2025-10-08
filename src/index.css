@@ -13,13 +13,13 @@ body, #root {
 
 /* Floating Navbar */
 .navbar {
-  position: fixed;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
+  /*position: fixed;*/
+  /*top: 10px;*/
+  /*left: 50%;*/
+  /*transform: translateX(-50%);*/
   height: 50px;
 
-  width: calc(100% - 80px);
+  width: calc(100%);
   max-width: 1200px;
   background: rgba(20, 20, 25, 0.85);
   backdrop-filter: blur(12px);
@@ -27,7 +27,7 @@ body, #root {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.1rem 1.5rem;
+  padding: 0 2rem;
   -webkit-app-region: drag;
   user-select: none;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
@@ -88,6 +88,7 @@ body, #root {
   margin: 0 auto;
   position: relative;
   height: calc(100vh - 80px);
+  min-height: calc(100vh - 80px); /* Ensures minimum height for every page */
   padding-top: 80px;
   display: flex;
   justify-content: center;
